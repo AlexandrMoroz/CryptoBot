@@ -1,0 +1,36 @@
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\user\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

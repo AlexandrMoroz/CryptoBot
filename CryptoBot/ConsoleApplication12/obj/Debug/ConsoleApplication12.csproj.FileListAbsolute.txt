@@ -1,0 +1,41 @@
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.pdb
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+c:\users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
+C:\Users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\documents\visual studio 2015\Projects\ConsoleApplication12\ConsoleApplication12\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alex\Desktop\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\Alex\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+C:\Users\Alex\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+C:\Users\Moro_as66\Desktop\ConsoleApplication12\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\Moro_as66\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+C:\Users\Moro_as66\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
+C:\Users\Moro_as66\Desktop\ConsoleApplication12\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe.config
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.exe
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\ConsoleApplication12.pdb
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\Newtonsoft.Json.dll
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\Newtonsoft.Json.xml
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.exe
+C:\Users\user\Desktop\ConsoleApplication12sdd\ConsoleApplication12\obj\Debug\ConsoleApplication12.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Web.Http.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Web.Http.WebHost.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Web.Http.xml
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\System.Web.Http.WebHost.xml
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Alex\Desktop\ConsoleApplication12sdd\ConsoleApplication12\bin\Debug\HtmlAgilityPack.xml
