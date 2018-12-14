@@ -16,6 +16,14 @@ namespace WindowsFormsApp1
             public Dictionary<decimal, decimal> StrategySell = new Dictionary<decimal, decimal>();
         
     }
+    public class BTCToUSDStrategy
+    {
+        public string MarketName = "";
+        public Stock stock;
+        public decimal CoinBuyQuantity;
+        public decimal CoinSellPrice;
+        public decimal BTCSellPrice;
+    }
     public class StrategyField
     {
         //1 - price, 2 - count

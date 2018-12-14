@@ -122,26 +122,30 @@ namespace WindowsFormsApp1
         {
             
         }
-        public Dictionary<string, TransforfOrders> GetOrders(List<KeyValuePair<string, string>> arg)
+        public Dictionary<string, TransformOrders> GetOrders(List<KeyValuePair<string, string>> arg)
         {
-            Dictionary<string, TransforfOrders> temp = new Dictionary<string, TransforfOrders>();
+            Dictionary<string, TransformOrders> temp = new Dictionary<string, TransformOrders>();
+            Dictionary<string, Task<TransformOrders>> tempAsync = new Dictionary<string, Task<TransformOrders>>();
             foreach (var i in arg)
             {
-                var order = GetOrder(i.Key, i.Value);
-                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, order);
-                
+                tempAsync.Add(i.Key + AccseptCoins.SPLITER + i.Value, GetOrderAsync(i.Key, i.Value));
+                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, new TransformOrders());
+            }
+            foreach (var i in tempAsync)
+            {
+                temp[i.Key] = i.Value.Result;
             }
             return temp;
         }
-        public TransforfOrders GetOrder(string MainCoinName, string SecondCoinName)
+        public TransformOrders GetOrder(string MainCoinName, string SecondCoinName)
         {
             if (MainCoinName=="USD")
             {
-                return new TransforfOrders();
+                return new TransformOrders();
             }
             string site = String.Format("https://bittrex.com/api/v1.1/public/getorderbook?market={0}&type=both&depth=30", MainCoinName + '-' + SecondCoinName);
            
-            TransforfOrders temp = new TransforfOrders();
+            TransformOrders temp = new TransformOrders();
             try
             {
                 WebResponse resp = BittrexGetRequst.Requst(site);
@@ -152,7 +156,7 @@ namespace WindowsFormsApp1
                     var res = JsonConvert.DeserializeObject<Field>(str);
                     if (res.success == true)
                     {
-                        temp = new TransforfOrders(res.result.sell, res.result.buy);
+                        temp = new TransformOrders(res.result.sell, res.result.buy);
                     }
                 }
                 return temp;
@@ -168,14 +172,14 @@ namespace WindowsFormsApp1
         }
         
 
-        public Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
+        public Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
         {
-            return  Task<Dictionary<string, TransforfOrders>>.Factory.StartNew(() => GetOrders(arg));
+            return  Task<Dictionary<string, TransformOrders>>.Factory.StartNew(() => GetOrders(arg));
         }
 
-        public Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
+        public Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
         {
-            return  Task<TransforfOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
+            return  Task<TransformOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
         }
     }
 

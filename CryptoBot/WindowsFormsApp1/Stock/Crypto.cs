@@ -114,22 +114,28 @@ namespace WindowsFormsApp1
         {
 
         }
-        public Dictionary<string, TransforfOrders> GetOrders(List<KeyValuePair<string, string>> arg)
+        public Dictionary<string, TransformOrders> GetOrders(List<KeyValuePair<string, string>> arg)
         {
-            Dictionary<string, TransforfOrders> temp = new Dictionary<string, TransforfOrders>();
+            Dictionary<string, TransformOrders> temp = new Dictionary<string, TransformOrders>();
+            Dictionary<string, Task<TransformOrders>> tempAsync = new Dictionary<string, Task<TransformOrders>>();
             foreach (var i in arg)
             {
-                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, GetOrder(i.Key, i.Value));
+                tempAsync.Add(i.Key + AccseptCoins.SPLITER + i.Value, GetOrderAsync(i.Key, i.Value));
+                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, new TransformOrders());
+            }
+            foreach (var i in tempAsync)
+            {
+                temp[i.Key] = i.Value.Result;
             }
             return temp;
         }
-        public TransforfOrders GetOrder(string MainCoinName, string SecondCoinName)
+        public TransformOrders GetOrder(string MainCoinName, string SecondCoinName)
         {
             if (MainCoinName == "USD")
             {
-                return new TransforfOrders();
+                return new TransformOrders();
             }
-            TransforfOrders temp = new TransforfOrders();
+            TransformOrders temp = new TransformOrders();
             string site = String.Format("https://www.cryptopia.co.nz/api/GetMarketOrders/{0}/30", SecondCoinName + '_' + MainCoinName);
         
             try
@@ -143,7 +149,7 @@ namespace WindowsFormsApp1
 
                     if (res.Success == true&&res.Error==null)
                     {
-                        temp = new TransforfOrders(res.Data.Sell.ToDictionary(d => d.Price, k => k.Volume), res.Data.Buy.ToDictionary(d => d.Price, k => k.Volume));
+                        temp = new TransformOrders(res.Data.Sell.ToDictionary(d => d.Price, k => k.Volume), res.Data.Buy.ToDictionary(d => d.Price, k => k.Volume));
                     }
                 }
                 return temp;
@@ -158,13 +164,13 @@ namespace WindowsFormsApp1
 
 
         }
-        public Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
+        public Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
         {
-            return Task<Dictionary<string, TransforfOrders>>.Factory.StartNew(() => GetOrders(arg));
+            return Task<Dictionary<string, TransformOrders>>.Factory.StartNew(() => GetOrders(arg));
         }
-        public Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
+        public Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
         {
-            return Task<TransforfOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
+            return Task<TransformOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
         }
     }
     public class CryptoWallet : IWallet

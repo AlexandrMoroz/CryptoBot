@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             {
                 string str = stream.ReadToEnd();
                 var a = JsonConvert.DeserializeObject<List<string>>(str);
-                temp = a.Where(x => x.Contains("btc")).ToList();
+                temp = a;
             }
             return temp;
         }
@@ -75,25 +75,25 @@ namespace WindowsFormsApp1
 
         }
 
-        public Dictionary<string, TransforfOrders> GetOrders(List<KeyValuePair<string, string>> arg)
+        public Dictionary<string, TransformOrders> GetOrders(List<KeyValuePair<string, string>> arg)
         {
 
-            Dictionary<string, TransforfOrders> temp = new Dictionary<string, TransforfOrders>();
+            Dictionary<string, TransformOrders> temp = new Dictionary<string, TransformOrders>();
             foreach (var i in arg)
             {
-                var order = GetOrder(i.Key, i.Value);
-                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, order);
+                var order = GetOrderAsync(i.Key, i.Value);
+                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, order.Result);
             }
 
             return temp;
         }
 
-        public TransforfOrders GetOrder(string MainCoinName, string SecondCoinName)
+        public TransformOrders GetOrder(string MainCoinName, string SecondCoinName)
         {
 
             string site = String.Format("http://data.gate.io/api2/1/orderBook/{0}", SecondCoinName.ToLower() + "_"+ MainCoinName.ToLower());
             HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(site);
-            TransforfOrders temp= new TransforfOrders();  
+            TransformOrders temp= new TransformOrders();  
             try
             {
                 WebResponse resp = req.GetResponse();
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
                     {
                         var a = JsonConvert.DeserializeObject<Field>(str);
 
-                         temp = new TransforfOrders(a.asks, a.bids);
+                         temp = new TransformOrders(a.asks, a.bids);
                     }
                     return temp;
                 }
@@ -121,14 +121,14 @@ namespace WindowsFormsApp1
 
         }
 
-        public Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
+        public Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
         {
-            return Task<Dictionary<string, TransforfOrders>>.Factory.StartNew(() => GetOrders(arg));
+            return Task<Dictionary<string, TransformOrders>>.Factory.StartNew(() => GetOrders(arg));
         }
 
-        public Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
+        public Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
         {
-            return Task<TransforfOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
+            return Task<TransformOrders>.Factory.StartNew(() => GetOrder(MainCoinName, SecondCoinName));
         }
     }
     public class GateWallet : IWallet

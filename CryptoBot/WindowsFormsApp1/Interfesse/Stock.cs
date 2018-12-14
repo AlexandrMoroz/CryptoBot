@@ -13,9 +13,9 @@ namespace WindowsFormsApp1
 {
     public interface IGetOrders
     {
-        Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg);
+        Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg);
 
-        Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName);
+        Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName);
     }
     public interface IGetInfo
     {

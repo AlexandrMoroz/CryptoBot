@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     }
     public static class PoloniexKey
     {
-      public static string ApiKey = "";
+      public static string ApiKey = "s";
       public static string SecretKey = "";
     }
 

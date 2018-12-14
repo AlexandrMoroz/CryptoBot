@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    public class TransforfOrders
+    public class TransformOrders
     {
         //price and quntity
         public Dictionary<decimal, decimal> asks = new Dictionary<decimal, decimal>();
         public Dictionary<decimal, decimal> bids= new Dictionary<decimal, decimal>();
 
-        public TransforfOrders() { }
-        public TransforfOrders(List<List<decimal>> a, List<List<decimal>> b)
+        public TransformOrders() { }
+        public TransformOrders(List<List<decimal>> a, List<List<decimal>> b)
         {
             asks = new Dictionary<decimal, decimal>();
             bids = new Dictionary<decimal, decimal>();
@@ -43,12 +43,12 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        public TransforfOrders(List<QuantityRate> a, List<QuantityRate> b)
+        public TransformOrders(List<QuantityRate> a, List<QuantityRate> b)
         {
             asks = a.ToDictionary(d => d.Rate, k=>k.Quantity);
             bids = b.ToDictionary(d => d.Rate, k => k.Quantity); 
         }
-        public TransforfOrders(Dictionary<decimal, decimal> a, Dictionary<decimal, decimal> b)
+        public TransformOrders(Dictionary<decimal, decimal> a, Dictionary<decimal, decimal> b)
         {
             asks = a;
             bids = b;

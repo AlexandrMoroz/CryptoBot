@@ -80,27 +80,27 @@ namespace WindowsFormsApp1
         //    }
         //    return temp;
         //}
-        public Dictionary<string, TransforfOrders> GetOrders(List<KeyValuePair<string, string>> arg)
+        public Dictionary<string, TransformOrders> GetOrders(List<KeyValuePair<string, string>> arg)
         {
             
-            Dictionary<string, TransforfOrders> temp = new Dictionary<string, TransforfOrders>();
+            Dictionary<string, TransformOrders> temp = new Dictionary<string, TransformOrders>();
             foreach (var i in arg)
             {
-                var order = GetOrder(i.Key, i.Value);
-                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, order);
+                var order = GetOrderAsync(i.Key, i.Value);
+                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, order.Result);
             }
 
             return temp;
         }
 
-        public TransforfOrders GetOrder(string MainCoinName, string SecondCoinName)
+        public TransformOrders GetOrder(string MainCoinName, string SecondCoinName)
         {
             if (MainCoinName == "USD")
             {
-                return new TransforfOrders();
+                return new TransformOrders();
             }
             string site = String.Format("https://poloniex.com/public?command=returnOrderBook&currencyPair={0}", MainCoinName + "_" + SecondCoinName);
-            TransforfOrders temp = new TransforfOrders();
+            TransformOrders temp = new TransformOrders();
             try
             {
                 WebResponse resp = PoloniexGetRequst.ProxyRequst(site);
@@ -112,7 +112,7 @@ namespace WindowsFormsApp1
                     string str = stream.ReadToEnd();
                     if (!str.Contains("error")){
                         var res = JsonConvert.DeserializeObject<LiveAndPoloniexField>(str);
-                        temp = new TransforfOrders(res.asks, res.bids);
+                        temp = new TransformOrders(res.asks, res.bids);
                     } }
                 }
                 return temp;
@@ -127,14 +127,14 @@ namespace WindowsFormsApp1
            
         }
 
-        public Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
+        public Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
         {
-            return  Task<Dictionary<string, TransforfOrders>>.Factory.StartNew(() => GetOrders(arg));
+            return  Task<Dictionary<string, TransformOrders>>.Factory.StartNew(() => GetOrders(arg));
         }
 
-        public Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
+        public Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
         {
-            return  Task<TransforfOrders>.Factory.StartNew(() => GetOrder(MainCoinName,SecondCoinName));            
+            return  Task<TransformOrders>.Factory.StartNew(() => GetOrder(MainCoinName,SecondCoinName));            
         }
 
 

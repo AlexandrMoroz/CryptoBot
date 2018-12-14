@@ -62,26 +62,32 @@ namespace WindowsFormsApp1
         {
 
         }
-        public Dictionary<string, TransforfOrders> GetOrders(List<KeyValuePair<string, string>> arg)
+        public Dictionary<string, TransformOrders> GetOrders(List<KeyValuePair<string, string>> arg)
         {
 
-            Dictionary<string, TransforfOrders> temp = new Dictionary<string, TransforfOrders>();
+            Dictionary<string, TransformOrders> temp = new Dictionary<string, TransformOrders>();
+            Dictionary<string, Task<TransformOrders>> tempAsync = new Dictionary<string, Task<TransformOrders>>();
             foreach (var i in arg)
             {
-                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, GetOrder(i.Key, i.Value)); 
+                tempAsync.Add(i.Key + AccseptCoins.SPLITER + i.Value, GetOrderAsync(i.Key, i.Value));
+                temp.Add(i.Key + AccseptCoins.SPLITER + i.Value, new TransformOrders());
+            }
+            foreach (var i in tempAsync)
+            {
+                temp[i.Key] = i.Value.Result;
             }
             return temp;
 
         }
-        public TransforfOrders GetOrder(string MainCoinName, string SecondCoinName)
+        public TransformOrders GetOrder(string MainCoinName, string SecondCoinName)
         {
             if (MainCoinName == "USDT")
             {
-                return new TransforfOrders();
+                return new TransformOrders();
             }
             string end = @"?limit=30";
             string start = "https://yobit.net/api/3/depth/";
-            TransforfOrders temp = new TransforfOrders();
+            TransformOrders temp = new TransformOrders();
             string site = start + SecondCoinName.ToLower() + "_"+ MainCoinName.ToLower() + end;
             try
             {
@@ -95,7 +101,7 @@ namespace WindowsFormsApp1
                 if (!str.Contains("Invalid pair name") && !str.Contains("Ddos"))
                 {
                     var res = JsonConvert.DeserializeObject<Dictionary<string, Field>>(str);
-                    temp = new TransforfOrders(res.First().Value.asks, res.First().Value.bids);
+                    temp = new TransformOrders(res.First().Value.asks, res.First().Value.bids);
                 }
             }
             return temp;
@@ -109,14 +115,14 @@ namespace WindowsFormsApp1
             }
         }
 
-        public Task<Dictionary<string, TransforfOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
+        public Task<Dictionary<string, TransformOrders>> GetOrdersAsync(List<KeyValuePair<string, string>> arg)
         {
-            return  Task<Dictionary<string, TransforfOrders>>.Factory.StartNew(() => GetOrders(arg));
+            return  Task<Dictionary<string, TransformOrders>>.Factory.StartNew(() => GetOrders(arg));
         }
 
-        public Task<TransforfOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
+        public Task<TransformOrders> GetOrderAsync(string MainCoinName, string SecondCoinName)
         {
-            return Task<TransforfOrders>.Factory.StartNew(() => GetOrder(MainCoinName,SecondCoinName));
+            return Task<TransformOrders>.Factory.StartNew(() => GetOrder(MainCoinName,SecondCoinName));
         }
     }
     public class YoubitWallet : IWallet

@@ -34,3 +34,71 @@ C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsA
 C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
 C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Alex\Desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+D:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\desktop\WEB (2)\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Алекс\Desktop\CryptoBot\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

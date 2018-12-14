@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
-using System.IO;
+using System.Timers;
 using WindowsFormsApp1.AIClass;
 
 namespace WindowsFormsApp1
@@ -22,134 +22,58 @@ namespace WindowsFormsApp1
     {
         Nullable<decimal> Ballans;
         List<MainStrategy> MainSt = new List<MainStrategy>();
+        List<BTCToUSDStrategy> MainStUSD = new List<BTCToUSDStrategy>();
         TaskScheduler context;
-        decimal BTCCost=10000;
+        decimal BTCCost = 6600m;
+        decimal USDTransactionFee = 0.06m;
+        decimal StockFee = 0.004m;
+        List<string> MainCoins = new List<string>() {  "USDT","USD","BTC"};
+        List<string> Coins = new List<string>() { "ETH", "ETC", "ZEC", "LTC", "XRP","DOGE" };
+        List<string> AllCoins = new List<string>();
+
+        List<KeyValuePair<string, string>> Markets { get; set; }
+  
         public Form1()
         {
             context = TaskScheduler.FromCurrentSynchronizationContext();
             InitializeComponent();
-        }
-
-
-
-        public static void CheakCoinsInfo(ref Dictionary<string, TransformInfo> first, Dictionary<string, TransformInfo> second, Dictionary<string, TransformInfo> therd, Dictionary<string, TransformInfo> fours, Dictionary<string, TransformInfo> fifs)
-        {
-            var temp = first.ToList();
-            bool flag = true;
-            foreach (var i in temp)
-            {
-                var Key = i.Key.Contains('_') ? i.Key.Split('_')[0].ToUpper() : i.Key;
-                var t = second!=null?second.ContainsKey(Key):false;
-                if (t)
-                {
-                    continue;
-                }
-                else
-                {
-                    t = therd.ContainsKey(Key);
-                    if (t)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        t = fours.ContainsKey(Key);
-                        if (t)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            if (flag)
-                            {
-                                var t2 = fifs.Where(d => d.Key.Split('_').First().ToUpper() == i.Key).ToList();
-                                if (t2.Count == 0)
-                                {
-                                    first.Remove(i.Key);
-                                }
-                                else
-                                {
-                                    continue;
-                                }
-                            }
-                            else
-                            {
-                                t = fifs.ContainsKey(Key);
-                                if (t)
-                                {
-                                    continue;
-                                }
-                            }
-
-                        }
-                    }
-                }
-            }
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-        public void UpdateCoins()
-        {
-            var MainCoins = new List<string>() { "BTC", "USDT"};
-            var Coins = new List<string>() {"ETH", "ETC", "ZEC","LTC"};
-
-            var Temp = new List<KeyValuePair<string, string>>();
+            Markets = new List<KeyValuePair<string, string>>();
             foreach (var item in Coins)
             {
                 foreach (var item2 in MainCoins)
                 {
-                    Temp.Add(new KeyValuePair<string, string>(item2,item));
+                    Markets.Add(new KeyValuePair<string, string>(item2, item));
                 }
             }
-            LiveCoin livecoin = new LiveCoin();
-            var LiveOrders = livecoin.Orders.GetOrdersAsync(Temp);
-            //Poloniex poloniex = new Poloniex();
-            //var PoloniexOrders = poloniex.Orders.GetOrdersAsync(Coins);
-            Cryptopia crypto = new Cryptopia();
-            var CryptOrders = crypto.Orders.GetOrdersAsync(Temp);
-            Bittrex bittrex = new Bittrex();
-            var BittrexOrders = bittrex.Orders.GetOrdersAsync(Temp);
-            //MainSt.Add(CompairCoins.CompareByDollar(CryptOrders.Result.Where(x=>x.Key.Contains("USDT")), CryptOrders.Result.Where(x => x.Key.Contains("BTC")), crypto))
-            Yobit yobit = new Yobit();
-            var YobitOrders = yobit.Orders.GetOrdersAsync(Temp);
-            Exmo exmo = new Exmo();
-            var ExmoOrders = exmo.Orders.GetOrdersAsync(Temp);
-            Gate gate = new Gate();
-            var GateOrders = gate.Orders.GetOrdersAsync(Temp);
-
-            //MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, PoloniexOrders.Result, livecoin, poloniex));
-            MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, CryptOrders.Result, livecoin, crypto));
-            MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, BittrexOrders.Result, livecoin, bittrex));
-            MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, YobitOrders.Result, livecoin, yobit));
-            MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, ExmoOrders.Result, livecoin, exmo));
-            MainSt.AddRange(CompairCoins.CoinCompare(LiveOrders.Result, GateOrders.Result, livecoin, gate));
-
-            //MainSt.AddRange(CompairCoins.CoinCompare(BittrexOrders.Result, PoloniexOrders.Result, bittrex, poloniex));
-            MainSt.AddRange(CompairCoins.CoinCompare(BittrexOrders.Result, CryptOrders.Result, bittrex, crypto));
-            MainSt.AddRange(CompairCoins.CoinCompare(BittrexOrders.Result, YobitOrders.Result, bittrex, yobit));
-            MainSt.AddRange(CompairCoins.CoinCompare(BittrexOrders.Result, ExmoOrders.Result, bittrex, exmo));
-            MainSt.AddRange(CompairCoins.CoinCompare(BittrexOrders.Result, GateOrders.Result, bittrex, gate));
-
-            //MainSt.AddRange(CompairCoins.CoinCompare(CryptOrders.Result, PoloniexOrders.Result, crypto, poloniex));
-            MainSt.AddRange(CompairCoins.CoinCompare(CryptOrders.Result, YobitOrders.Result, crypto, yobit));
-            MainSt.AddRange(CompairCoins.CoinCompare(CryptOrders.Result, ExmoOrders.Result, crypto, exmo));
-            MainSt.AddRange(CompairCoins.CoinCompare(CryptOrders.Result, GateOrders.Result, crypto, gate));
-
-
-            //MainSt.AddRange(CompairCoins.CoinCompare(YobitOrders.Result, PoloniexOrders.Result, yobit, poloniex));
-            MainSt.AddRange(CompairCoins.CoinCompare(YobitOrders.Result, ExmoOrders.Result, yobit, exmo));
-            MainSt.AddRange(CompairCoins.CoinCompare(YobitOrders.Result, GateOrders.Result, yobit, gate));
-
-            MainSt.AddRange(CompairCoins.CoinCompare(ExmoOrders.Result, GateOrders.Result, exmo, gate));
-            //MainSt.AddRange(CompairCoins.CoinCompare(ExmoOrders.Result, PoloniexOrders.Result, exmo, poloniex));
-
-            //MainSt.AddRange(CompairCoins.CoinCompare(GateOrders.Result, PoloniexOrders.Result, gate, poloniex));
-
 
         }
+
+             
+        public void UpdateCoins()
+        {
+            
+            var Cover = new List<OrdersCover2Stock>() {
+                new OrdersCover2Stock(new LiveCoin(),Markets),
+                new OrdersCover2Stock(new Cryptopia(),Markets),
+                new OrdersCover2Stock(new Bittrex(),Markets),
+                new OrdersCover2Stock(new Yobit(),Markets),
+                new OrdersCover2Stock(new Exmo(),Markets),
+                new OrdersCover2Stock(new Gate(),Markets)
+            };
+
+            CombineOrders(Cover);
+        }
+        public void CombineOrders(List<OrdersCover2Stock> arr)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                for (int j = i + 1; j < arr.Count; j++)
+                {
+                    MainSt.AddRange(CompairCoins.CoinCompare(arr[i].order.Result, arr[j].order.Result, arr[i].stock, arr[j].stock));
+                }
+            }
+        }
+
         public void UpdateList()
         {
             MainSt.Clear();
@@ -165,6 +89,7 @@ namespace WindowsFormsApp1
                 listView1.Columns.Add("Quantity", "Quantity");
                 listView1.Columns.Add("AllProfit", "AllProfit");
                 listView1.Columns.Add("StockProfit", "StockProfit");
+                
             }, token, TaskCreationOptions.None, context);
             
             foreach (var item in MainSt)
@@ -173,9 +98,14 @@ namespace WindowsFormsApp1
                 item2.SubItems.Add(item.BuyStockEX.StockName);
                 item2.SubItems.Add(item.SellStockEX.StockName);
 
+                decimal divided = item.StrategyBuy.Sum(x => x.Key * x.Value);
+                decimal divider = item.StrategyBuy.Sum(x => x.Value);
+                decimal AverBuyPrice = Math.Round(divided / divider, 8);
 
-                decimal AverBuyPrice = Math.Round(item.StrategyBuy.Average(x => x.Key), 8);
-                decimal AverSellPrice = Math.Round(item.StrategySell.Average(x => x.Key), 8);
+                decimal divided2 = item.StrategySell.Sum(x => x.Key * x.Value);
+                decimal divider2 = item.StrategySell.Sum(x => x.Value);
+                decimal AverSellPrice = Math.Round(divided2 / divider2, 8);
+
                 decimal Quantity = item.StrategyBuy.Sum(d => d.Value);
 
                 item2.SubItems.Add(AverBuyPrice.ToString());
@@ -183,23 +113,36 @@ namespace WindowsFormsApp1
                 item2.SubItems.Add(Quantity.ToString());
 
                 decimal BlackProfit = Math.Round((AverSellPrice - AverBuyPrice) * Quantity, 8);
-                decimal FeeCost = Math.Round(((Quantity * AverBuyPrice) * (decimal)0.003), 8);
+                decimal FeeCost = Math.Round(((Quantity * AverBuyPrice) * StockFee), 8);
+                decimal Profit = (BlackProfit - FeeCost);
 
-                item2.SubItems.Add(((BlackProfit - FeeCost) * (item.MarketName.Contains("USD") ? 0 : BTCCost)).ToString());
+                if (item.MarketName.Split('-')[0] == "USDT")
+                {
+                    Profit -= 15m;
+                }
+                else if (item.MarketName.Split('-')[0] == "USD")
+                {
+                    Profit -= ((AverBuyPrice * Quantity) * USDTransactionFee);
+                }
+
+                item2.SubItems.Add(Profit.ToString());
                 item2.SubItems.Add("0");
-                Task.Factory.StartNew(() => { listView1.Items.Add(item2); }, token, TaskCreationOptions.None, context);
+                Task.Factory.StartNew(() => { listView1.Items.Add(item2);
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }, token, TaskCreationOptions.None, context);
             }
         }
-        public void  Updatetimer(Object source, ElapsedEventArgs e)
+        public void Updatetimer(Object source, ElapsedEventArgs e)
         {
             var token = Task.Factory.CancellationToken;
             Task.Factory.StartNew(() => {
-                timer.Text = (Convert.ToInt32(timer.Text) + 1).ToString();
+                TimerView.Text = (Convert.ToInt32(TimerView.Text) + 1).ToString();
                 }, token, TaskCreationOptions.None, context);
         }
-        private  void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            timer.Text = "0";
+            TimerView.Text = "0";
             Task h = Task.Factory.StartNew(() =>
             {
                 System.Timers.Timer a = new System.Timers.Timer(1000);
@@ -208,17 +151,98 @@ namespace WindowsFormsApp1
                 UpdateList();
                 a.Stop();
             });
-            
-       
         }
 
+        private void USDBut_Click(object sender, EventArgs e)
+        {
+            TimerView.Text = "0";
+            Task h = Task.Factory.StartNew(() =>
+            {
+                System.Timers.Timer a = new System.Timers.Timer(1000);
+                a.Elapsed += Updatetimer;
+                a.Start();
+                UpdateListUSDAlg();
+                a.Stop();
+            });
+        }
+        //public string MarketName = "";
+        //public Stock stock;
+        //public decimal CoinBuyPrice;
+        //public decimal CoinSellPrice;
+        //public decimal BTCSellPrice;
+        private void UpdateListUSDAlg()
+        {
+            MainStUSD.Clear();
+            UpdateCoinsUSDAlg();
+            var token = Task.Factory.CancellationToken;
+            Task.Factory.StartNew(() => {
+                listView1.Clear();
+                listView1.Columns.Add("Coin", "Coin");
+                listView1.Columns.Add("Stock", "Stock");
+                listView1.Columns.Add("CoinBuyQuantity", "CoinBuyQuantity");
+                listView1.Columns.Add("CoinSellPrice", "CoinSellPrice");
+                listView1.Columns.Add("BTCSellPrice", "BTCSellPrice");
+                listView1.Columns.Add("AllProfit", "AllProfit");
+                listView1.Columns.Add("StockProfit", "StockProfit");
+
+            }, token, TaskCreationOptions.None, context);
+
+            foreach (var item in MainStUSD)
+            {
+                ListViewItem item2 = new ListViewItem(item.MarketName);
+                item2.SubItems.Add(item.stock.StockName);
+
+             
+             
+                item2.SubItems.Add(item.CoinBuyQuantity.ToString());
+                item2.SubItems.Add(item.CoinSellPrice.ToString());
+                item2.SubItems.Add(item.BTCSellPrice.ToString());
+                var prof = item.CoinBuyQuantity - item.CoinBuyQuantity;
+                item2.SubItems.Add(prof.ToString());
+                Task.Factory.StartNew(() => {
+                    listView1.Items.Add(item2);
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                }, token, TaskCreationOptions.None, context);
+            }
+        }
+        private void UpdateCoinsUSDAlg()
+        {
+            var temp = new GateInfo().GetPairs(); 
+            foreach(var item in temp)
+            {
+                if (!MainCoins.Contains(item.Split('_')[0]))
+                {
+                    AllCoins.Add(item.Split('_')[0]);
+                }
+            }
+            AllCoins = AllCoins.Distinct().ToList();
+            var Cover = new List<OrdersCoverOneStock>() {
+                new OrdersCoverOneStock(new LiveCoin(),AllCoins,"USD","BTC"),
+                //new OrdersCoverOneStock(new Cryptopia(),AllCoins,"BTC","USDT"),
+                //new OrdersCoverOneStock(new Bittrex(),AllCoins,"USDT","BTC"),
+                //new OrdersCoverOneStock(new Yobit(),AllCoins,"USD","BTC"),
+                //new OrdersCoverOneStock(new Exmo(),AllCoins,"USDT","BTC"),
+                //new OrdersCoverOneStock(new Gate(),AllCoins,"USDT","BTC")
+            };
+
+            UpdateCoins(Cover);
+        }
+        public void UpdateCoins(List<OrdersCoverOneStock> arr)
+        {
+            foreach (var item in arr)
+            {
+                MainStUSD.AddRange(CompairCoins.CompareByDollar(item.CoinMainCoin.Result, item.CoinValue.Result, item.MainCoinValue.Result, 0.01m, item.stock));
+            }
+            
+        }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var MarketName = listView1.FocusedItem.Text; 
+            var MarketName = listView1.FocusedItem.Text;
             var item = listView1.FocusedItem.SubItems[1].Text;
             var item2 = listView1.FocusedItem.SubItems[2].Text;
-            var strategy = MainSt.Where(x => x.MarketName == MarketName&& x.BuyStockEX.StockName == item && x.SellStockEX.StockName == item2).FirstOrDefault();
-            if (strategy!=null)
+            var strategy = MainSt.Where(x => x.MarketName == MarketName && x.BuyStockEX.StockName == item && x.SellStockEX.StockName == item2).FirstOrDefault();
+            if (strategy != null)
             {
                 var form = new Form2(strategy);
                 form.Show();
@@ -227,12 +251,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("No selected items");
             }
-            
         }
 
         private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            this.listView1.ListViewItemSorter = new ListViewItemComparer(e.Column);
+            listView1.ListViewItemSorter = new ListViewItemComparer(e.Column);
             // Call the sort method to manually sort.
             listView1.Sort();
         }
@@ -265,5 +288,16 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void minimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
+   
 }

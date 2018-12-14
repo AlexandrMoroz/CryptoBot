@@ -8,7 +8,7 @@ namespace WindowsFormsApp1
 {
     public class ProfitCalc
     {
-        public int BTC = 16300;
+        public int BTC = 6400;
         public decimal TradeFeeBuy = 0.002m;
         public decimal TradeFeeSell = 0.002m;
         public Dictionary<decimal, decimal> StrategyBuy { get; set; }
@@ -19,39 +19,40 @@ namespace WindowsFormsApp1
         public decimal SellFee { get; set; }  
         public decimal BTCStockContains { get; set; }   
         public decimal Profit { get; set; }  
-
+        public MainStrategy MStrategy { get; set; }
         public ProfitCalc(MainStrategy arg, decimal BTCValue)
         {
-            CalcBuyStrategy(arg, BTCValue);
-            CalcSellStrategy(arg);
+            MStrategy = arg;
+            CalcBuyStrategy(BTCValue);
+            CalcSellStrategy();
             CalcProfit();
         }
         public ProfitCalc(MainStrategy arg)
         {
-            CalcBuyStrategy(arg);
-            CalcSellStrategy(arg);
+            MStrategy = arg;
+            CalcBuyStrategy();
+            CalcSellStrategy();
             CalcProfit();
-            BTCStockContains = GetBTCBallans(arg);
+            BTCStockContains = GetBTCBallans();
         }
-        private void CalcBuyStrategy(MainStrategy arg, decimal BTCValue = 0)
+        private void CalcBuyStrategy(decimal BTCValue = 0)
         {
             decimal BTC;
             if (BTCValue == 0)
             {
-                BTC = GetBTCBallans(arg);
+                BTC = GetBTCBallans();
             }
             else
             {
                 BTC = BTCValue;
             }
 
-            var Buy = new Dictionary<decimal, decimal>(arg.StrategyBuy);
+            var Buy = new Dictionary<decimal, decimal>(MStrategy.StrategyBuy);
 
             Dictionary<decimal, decimal> BuyTemp = new Dictionary<decimal, decimal>();
             
             //расчет количества ордеров на покупку по текущий баланс битка на 
             //биржи покупки (какие ордера надо покупать)
-            
             while (Buy.Count != 0 && BTC != 0)
             {
                 var BuyElem = Buy.First();
@@ -89,9 +90,9 @@ namespace WindowsFormsApp1
             BuyBTC = Math.Round(BuyValue,8);
             StrategyBuy = BuyTemp;
         }
-        private void CalcSellStrategy(MainStrategy arg)
+        private void CalcSellStrategy()
         {
-            var Sell = arg.StrategySell;
+            var Sell = MStrategy.StrategySell;
             var BuyTemp = new Dictionary<decimal, decimal>(StrategyBuy);
             Dictionary<decimal, decimal> SellResult = new Dictionary<decimal, decimal>();
             //расчет количества ордеров на продажу по ордерам буржи продажи  (по каким ордерам надо продавать) 
@@ -150,7 +151,7 @@ namespace WindowsFormsApp1
             SellBTC = Math.Round(SellValue,8);
             StrategySell = SellResult;
         }
-        public void CalcProfit()
+        private void CalcProfit()
         {
             Profit = SellBTC - BuyBTC;
             BuyFee = Math.Round(BuyBTC * TradeFeeBuy,8);
@@ -159,7 +160,7 @@ namespace WindowsFormsApp1
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fee">true for get strategy this fee, false this out</param>
+        /// <param name="fee">true for get strategy whis fee, false whis out</param>
         /// <returns></returns>
         public Dictionary<decimal, decimal> GetBuyStrategy(bool fee)
         {
@@ -175,9 +176,9 @@ namespace WindowsFormsApp1
                 return StrategyBuy;
             }
         }
-        public decimal GetBTCBallans(MainStrategy arg)
+        public decimal GetBTCBallans()
         {
-            var bal = arg.BuyStockEX.Ballans.GetBalances();
+            var bal = MStrategy.BuyStockEX.Ballans.GetBalances();
             if (bal.ContainsKey("BTC"))
             {
                 return bal["BTC"].Available;

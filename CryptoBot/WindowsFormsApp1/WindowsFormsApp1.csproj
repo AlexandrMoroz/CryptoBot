@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="Interfesse\AccseptCoins.cs" />
+    <Compile Include="OrdersCover.cs" />
     <Compile Include="Requsts\GetRequst.cs" />
     <Compile Include="II.cs" />
     <Compile Include="Stock\Bittrex.cs" />

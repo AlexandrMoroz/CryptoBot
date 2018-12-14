@@ -8,18 +8,18 @@ namespace WindowsFormsApp1.AIClass
 {
     public static class CompairCoins
     {
-        public static List<MainStrategy> CoinCompare(Dictionary<string, TransforfOrders> arg1, Dictionary<string, TransforfOrders> arg2, Stock mainStockEx, Stock secoondStockEx)
+        public static List<MainStrategy> CoinCompare(Dictionary<string, TransformOrders> arg1, Dictionary<string, TransformOrders> arg2, Stock mainStockEx, Stock secoondStockEx)
         {
             if (arg1 == null || arg2 == null)
             {
                 return new List<MainStrategy>();
             }
-            Dictionary<string, TransforfOrders> main = arg1.Where(d => arg2.ContainsKey(d.Key)).ToDictionary(x => x.Key, y => new TransforfOrders()
+            Dictionary<string, TransformOrders> main = arg1.Where(d => arg2.ContainsKey(d.Key)).ToDictionary(x => x.Key, y => new TransformOrders()
             {
                 asks = y.Value.asks.Count != 0 ? y.Value.asks.Take(30).ToDictionary(c => c.Key, v => v.Value) : y.Value.asks,
                 bids = y.Value.bids.Count != 0 ? y.Value.bids.Take(30).ToDictionary(c => c.Key, v => v.Value) : y.Value.bids
             });
-            Dictionary<string, TransforfOrders> second = arg2.Where(d => arg1.ContainsKey(d.Key)).ToDictionary(x => x.Key, y => new TransforfOrders()
+            Dictionary<string, TransformOrders> second = arg2.Where(d => arg1.ContainsKey(d.Key)).ToDictionary(x => x.Key, y => new TransformOrders()
             {
                 asks = y.Value.asks.Count != 0 ? y.Value.asks.Take(30).ToDictionary(c => c.Key, v => v.Value) : y.Value.asks,
                 bids = y.Value.bids.Count != 0 ? y.Value.bids.Take(30).ToDictionary(c => c.Key, v => v.Value) : y.Value.bids
@@ -28,9 +28,9 @@ namespace WindowsFormsApp1.AIClass
 
             List<MainStrategy> MainSt = new List<MainStrategy>();
 
-            foreach (KeyValuePair<string, TransforfOrders> i in main)
+            foreach (KeyValuePair<string, TransformOrders> i in main)
             {
-                TransforfOrders temp;
+                TransformOrders temp;
 
                 if (second.ContainsKey(i.Key))
                 {
@@ -250,18 +250,18 @@ namespace WindowsFormsApp1.AIClass
             return MainSt;
             #endregion
         }
-        public static MainStrategy ComparePrice(TransforfOrders arg1, TransforfOrders arg2, Stock mainStockEx, Stock secoondStockEx, string MarketName)
+        public static MainStrategy CoinCompare(TransformOrders arg1, TransformOrders arg2, Stock mainStockEx, Stock secoondStockEx, string MarketName)
         {
             if (arg1 == null || arg2 == null)
             {
                 return null;
             }
-            TransforfOrders main = new TransforfOrders()
+            TransformOrders main = new TransformOrders()
             {
                 asks = arg2.asks.Take(30).ToDictionary(c => c.Key, v => v.Value),
                 bids = arg2.bids.Take(30).ToDictionary(c => c.Key, v => v.Value)
             };
-            TransforfOrders second = new TransforfOrders()
+            TransformOrders second = new TransformOrders()
             {
                 asks = arg1.asks.Take(30).ToDictionary(c => c.Key, v => v.Value),
                 bids = arg1.bids.Take(30).ToDictionary(c => c.Key, v => v.Value)
@@ -373,12 +373,82 @@ namespace WindowsFormsApp1.AIClass
             }
             return false;
         }
-
-        public static MainStrategy CompareByDollar(IEnumerable<KeyValuePair<string, TransforfOrders>> Dollar, IEnumerable<KeyValuePair<string, TransforfOrders>> BTC, Stock StockEx)
+        private static BTCToUSDStrategy BTCToUSD(TransformOrders CoinBTC, TransformOrders CoinUSD, TransformOrders BTCUSD, decimal BTCballance, string market, Stock StockEx)
         {
+            //bid лево прадают ask покупают право
+            //находим количество коинов за BTC 
+            var COINS = BTCballance / CoinBTC.asks.First().Key;
+            //продаем коины за USD
+            var USDByCoin = CoinUSD.bids.First().Key * COINS;
+            //продаем тоже количество BTC за USD
+            var USDByBTC = BTCballance * BTCUSD.asks.First().Key;
+            //сравниваем если цена проданых BTC и проданых коинов
+            if (USDByBTC < USDByCoin)
+            {
+                return new BTCToUSDStrategy() { stock = StockEx, MarketName = market, CoinBuyQuantity = COINS, CoinSellPrice = USDByCoin, BTCSellPrice = USDByBTC };
+            }
             return null;
+        }
+        private static BTCToUSDStrategy USDToBTC(TransformOrders CoinBTC, TransformOrders CoinUSD, TransformOrders BTCUSD, decimal USDBallance, string market, Stock StockEx)
+        {
+            //bid лево прадают ask покупают право
+            //находим количество коинов за BTC 
+            var COINS = USDBallance / CoinUSD.bids.First().Key;
+            //продаем коины за USD
+            var USDByCoin = CoinBTC.asks.First().Key * COINS;
+            //продаем тоже количество BTC за USD
+            var USDByBTC = USDBallance * BTCUSD.bids.First().Key;
+            //сравниваем если цена проданых BTC и проданых коинов
+            if (USDByBTC < USDByCoin)
+            {
+                return new BTCToUSDStrategy() { stock = StockEx, MarketName = market, CoinBuyQuantity = COINS, CoinSellPrice = USDByCoin, BTCSellPrice = USDByBTC };
+            }
+            return null;
+        }
+        private static bool EqualsByNull(TransformOrders CoinUSD)
+        {
+            if (CoinUSD.asks == null || CoinUSD.asks.Count() == 0 ||
+                CoinUSD.bids == null || CoinUSD.bids.Count() == 0 
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static List<BTCToUSDStrategy> CompareByDollar(Dictionary<string, TransformOrders> CoinBTC, Dictionary<string, TransformOrders> CoinUSD, TransformOrders BTCUSD, decimal btcballance, Stock StockEx)
+        {
+            var list = new List<BTCToUSDStrategy>();
+
+            foreach (var item in CoinUSD)
+            {
+                if (EqualsByNull(item.Value))
+                {
+                    continue;
+                }
+                var ItemCoinBTC = CoinBTC.FirstOrDefault(x=>x.Key.Split('-')[1] == item.Key.Split('-')[1]).Value;
+                if (EqualsByNull(ItemCoinBTC))
+                {
+                    continue;
+                }
+                BTCToUSDStrategy temp = BTCToUSD(ItemCoinBTC, item.Value, BTCUSD, btcballance, item.Key, StockEx);
+                if (temp != null)
+                {
+                    list.Add(temp);
+                }
+                //temp = USDToBTC(ItemCoinBTC, item.Value, BTCUSD, btcballance, item.Key, StockEx);
+                //if (temp != null)
+                //{
+                //    list.Add(temp);
+                //}
+
+            }
+            return list;
 
         }
+      
     }
 
 

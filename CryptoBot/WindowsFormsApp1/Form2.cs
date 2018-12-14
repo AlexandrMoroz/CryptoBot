@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +17,7 @@ namespace WindowsFormsApp1
         {
             context = TaskScheduler.FromCurrentSynchronizationContext();
             mainstratagy = arg;
-            profit = new ProfitCalc(arg);
+            profit = new ProfitCalc(arg,0.1m);
             BotAi = new II(arg);
             InitializeComponent();
         }
@@ -61,7 +55,7 @@ namespace WindowsFormsApp1
             BTCSellTextBox.Text = profit.SellBTC.ToString();
             BuyFeeTextBox.Text = profit.BuyFee.ToString();
             SellFeeTextBox.Text = profit.SellFee.ToString();
-            BTCContains.Text = profit.GetBTCBallans(mainstratagy).ToString();
+            BTCContains.Text = profit.GetBTCBallans().ToString();
             ProfitTextBox.Text = profit.Profit.ToString();
         }
 

@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             var SellSTPrice = mn.SellStockEX.Orders.GetOrderAsync(mn.MarketName.Split(AccseptCoins.SPLITER)[0], mn.MarketName.Split(AccseptCoins.SPLITER)[1]);
             var BuySTPrice = mn.BuyStockEX.Orders.GetOrderAsync(mn.MarketName.Split(AccseptCoins.SPLITER)[0], mn.MarketName.Split(AccseptCoins.SPLITER)[1]);
 
-            MainStrategy tempStr = CompairCoins.ComparePrice(SellSTPrice.Result, BuySTPrice.Result, mn.BuyStockEX, mn.BuyStockEX, mn.MarketName);
+            MainStrategy tempStr = CompairCoins.CoinCompare(SellSTPrice.Result, BuySTPrice.Result, mn.BuyStockEX, mn.BuyStockEX, mn.MarketName);
             if (tempStr.StrategyBuy.Count != 0 && tempStr.StrategySell.Count != 0)
             {
                 mn.StrategyBuy = tempStr.StrategyBuy;
